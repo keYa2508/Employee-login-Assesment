@@ -70,7 +70,7 @@ const Registration = () => {
             <button>Register</button>
 
 
-            <p onClick={handleClick}>Already registerd {""} login?</p>
+            <p onClick={handleClick}>Already registerd {""} register?</p>
 
             {flag && (
                <div className="alert alert-danger" role="alert">
