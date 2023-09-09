@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import Home from './Home'
+import Registration from './Registration';
 
 const Login = () => {
     const[emailLog, setEmailLog] = useState("");
     const[passwordLog, setPasswordLog] = useState("");
     const[flag, setFlag] = useState(false);
     const[home, setHome] = useState(false);
+    const [register, setRegister] = useState(false)
 
     const employeeList = JSON.parse(localStorage.getItem("Employees"));
     console.log('employeeList',employeeList)
@@ -33,11 +35,15 @@ const Login = () => {
         
     }
 
+    const handleClick = () =>{
+        setRegister(!register)
+    }
+
    
 
   return (
     <section>
-        {!home ? (
+        {!home ? (!register ?
             <div  className='form-box'>
                 <div className='form-value'>
         <form onSubmit={handleLogin}>
@@ -54,7 +60,7 @@ const Login = () => {
             </div>
             <button>Login</button>
 
-            
+            <p onClick={handleClick}>You are not registerd {""} login?</p>
             
             {flag && (
                <div className="alert alert-danger" role="alert">
@@ -65,7 +71,8 @@ const Login = () => {
             </form>
             </div>
             </div>
-            ):(
+            :<Registration/>)
+            :(
                 <Home/>
             )}
             
