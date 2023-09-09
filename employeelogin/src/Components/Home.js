@@ -1,15 +1,19 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react'
+import Login from './Login';
 
 
 const Home = () => {
-  const navigation = useNavigate();
 
+  const[login, setLogin] = useState(false)
 
+const handleClick = () => {
+  setLogin(!login)
+}
 
  const empObj=JSON.parse(localStorage.getItem('empDetails'));
   return (
      <section>
+      {!login ?
       <div  className='form-box'>
       <div className='form-value'>
       <form>
@@ -23,12 +27,12 @@ const Home = () => {
           Mobile Number : {empObj.eMobile}
         </div>
 
-      <button onClick={() => {navigation ('/login')}}>Logout</button>
+      <button onClick={handleClick}>Logout</button>
       
   
       </form>
       </div>
-      </div>
+      </div> : <Login/>}
       
     </section> 
   )
